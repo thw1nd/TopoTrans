@@ -1,0 +1,51 @@
+data_root: "data/WHUOPTSAR/original_images"
+output_dir: "outputs/topotrans_whuoptsar_v5"
+train_class_json: "datasets/WHUOPTSAR5class.json"
+test_class_json: "datasets/WHUOPTSAR.json"
+masam_weights: "weights/sam2.1_hiera_tiny.pt"
+masam_weights_type: "sam2_trunk"
+
+train_split: "all"
+train_split_file: "datasets/splits/whuoptsar_unseen_friendly_train.txt"
+test_split: "all"
+test_split_file: "datasets/splits/whuoptsar_unseen_friendly_test.txt"
+
+num_classes: 7
+ignore_value: 255
+image_size: 384
+eval_tile_stride: 384
+augment_rotate_degrees: 0.0
+
+batch_size: 8
+num_workers: 0
+epochs: 100
+seed: 42
+base_lr: 0.00025
+clip_lr_multiplier: 0.01
+weight_decay: 0.0001
+freeze_masam: true
+clip_finetune: "attention"
+max_train_samples: 0
+max_test_samples: 0
+
+predictor_version: "v3"
+prompt_ensemble_type: "single"
+v2_margin_threshold: 0.04
+v2_margin_sharpness: 40.0
+v2_guided_kernel: 3
+v2_guided_temperature: 0.07
+v2_guided_spatial_sigma: 1.0
+v2_guided_max_strength: 1.0
+v2_guided_initial_strength: 0.01
+v2_guided_detach_margin: true
+
+# V5 MG-SGR semantic relation refinement.
+relation_dim: 64
+relation_temperature: 0.07
+relation_max_strength: 1.0
+relation_initial_strength: 0.1
+
+# Keep the V4 objective unchanged.
+unknown_negative_weight: 1.0
+class_aware_sampler: false
+

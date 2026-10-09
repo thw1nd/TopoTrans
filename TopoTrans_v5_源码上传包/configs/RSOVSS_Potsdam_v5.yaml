@@ -1,0 +1,41 @@
+data_root: "data/Potsdam/Images"
+output_root: "outputs/topotrans_potsdam_v5"
+train_class_json: "datasets/Potsdam3class_seen.json"
+test_class_json: "datasets/Potsdam5class.json"
+masam_weights: "weights/sam2.1_hiera_tiny.pt"
+masam_weights_type: "sam2_trunk"
+train_split: "original_train"
+test_split: "original_test"
+num_classes: 5
+ignore_value: 255
+image_size: 384
+tile_stride: 384
+cache_scenes: 32
+batch_size: 8
+num_workers: 0
+epochs: 100
+seed: 42
+base_lr: 0.00025
+clip_lr_multiplier: 0.01
+weight_decay: 0.0001
+freeze_masam: true
+clip_finetune: "attention"
+max_train_samples: 0
+max_test_samples: 0
+
+# V4 objective retained by V5.
+unknown_negative_weight: 1.0
+
+# V5: MG-SGR semantic refinement + MAHR spatial refinement.
+v2_margin_threshold: 0.04
+v2_margin_sharpness: 40.0
+v2_guided_kernel: 3
+v2_guided_temperature: 0.07
+v2_guided_spatial_sigma: 1.0
+v2_guided_max_strength: 1.0
+v2_guided_initial_strength: 0.01
+v2_guided_detach_margin: true
+relation_dim: 64
+relation_temperature: 0.07
+relation_max_strength: 1.0
+relation_initial_strength: 0.1
